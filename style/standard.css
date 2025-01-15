@@ -1,0 +1,14 @@
+html {
+    scroll-behavior: smooth;
+    font-family: "Roboto Condensed", serif;
+    font-optical-sizing: auto;
+}
+body {
+    margin: 0;
+    background-color: #071820;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0 24px;
+}

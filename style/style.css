@@ -1,0 +1,128 @@
+footer{
+    height: 80px;
+    width: 100%;
+    bottom: 0 !important;
+    right: 0;
+    background-color: #0A222C;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-radius: 25px;
+    font-size: 32px;
+    color: rgb(143, 143, 14);
+    font-weight: 700;
+}
+footer p{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-left: 16px;
+}
+footer img{
+    height: 56px;
+    width: auto;
+}
+header{
+    height: 80px;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: #0A222C;
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+a{
+    color: white;
+}
+.main{
+    flex-grow: 1;
+}
+#search_button{
+    height: 40px;
+    width: 60px;
+    cursor: pointer;
+    background-color: #0A222C;
+    border-radius: 25px;
+    font-size: 24px;
+}
+#pokemonName_input{
+    height: 40px;
+    width: 240px;
+    cursor: pointer;
+    background-color: #0A222C;
+    border-radius: 25px;
+    color: white;
+    padding-left: 12px;
+}
+.searchbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+.display_pokemons_container{
+    min-height: fit-content;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+    padding: 48px 0;
+}
+.display_pokemons_container::-webkit-scrollbar{
+    display: none;
+}
+.logo_header{
+    height: 80px;
+    width: auto;
+}
+.overlay_card_info{
+    background-color:  #071820;
+    min-height: 100%;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    cursor: pointer;
+}
+.d_none{
+    display: none;
+}
+
+.button_div_main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.button_div_main button{
+    height: 40px;
+    width: 240px;
+    cursor: pointer;
+    background-color: #0A222C;
+    border-radius: 25px;
+    font-size: 16px;
+    color: white;
+    transform: scale(1)
+}
+
+.button_div_main button:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 4px white;
+}
+

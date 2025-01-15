@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="./style/standard.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/card.css">
+    <link rel="stylesheet" href="./style/types.css">
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="stylesheet" href="./assets/icons/icons.css">
+
+    <link rel="icon" type="x-icon/image" href="./assets/imgs/favicon.ico">
+</head>
+
+
+<body onload="init()">
+    <header>
+        <img class="logo_header" src="./assets/imgs/pokebal_2.jpg">
+        <h1>Pokedex</h1>
+    </header>
+    <div class="main">
+        <div class="searchbox"> 
+            <input id="pokemonName_input" type="text" placeholder="Search Pokemon by name">
+            <button id="search_button">🔎</button>
+        </div>
+        <div id="display_pokemons_container" class="display_pokemons_container">
+
+        </div>
+        <div class="button_div_main">
+            <button>Load more Pokemon</button>
+            <button>Back to the top</button>
+
+        </div>
+    </div>
+    <div onclick="closeOverlayCardInfo()" id="overlay_card_info" class="overlay_card_info d_none"></div>
+    <footer>
+        <p>Created by Maike</p>
+        <img src="./assets/imgs/pokemon.jpg" alt="pokemon">
+    </footer>
+    <script src="./script/script.js"></script>
+    <script src="./script/overlay.js"></script>
+    <script src="./script/loadPage.js"></script>
+    <script src="./script/templates.js"></script>
+</body>
+</html>
