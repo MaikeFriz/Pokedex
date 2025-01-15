@@ -18,7 +18,7 @@
 
 <body onload="init()">
     <header>
-        <img class="logo_header" src="./assets/imgs/pokebal_2.jpg">
+        <img class="logo_header" id="top_of_page" src="./assets/imgs/pokebal_2.jpg">
         <h1>Pokedex</h1>
     </header>
     <div class="main">
@@ -30,10 +30,14 @@
 
         </div>
         <div class="button_div_main">
-            <button>Load more Pokemon</button>
-            <button>Back to the top</button>
-
+            <button id="load_more_pkm" onclick="loadMorePkm()">Load more Pokemon</button>
+            <button><a href="#top_of_page">Back to the top</a></button>
         </div>
+    </div>
+
+    <div id="loading_spinner">
+        <img class="loading_spinner_img" src="./assets/imgs/pokebal.jpg">
+        <p>... loading ...</p>
     </div>
     <div onclick="closeOverlayCardInfo()" id="overlay_card_info" class="overlay_card_info d_none"></div>
     <footer>

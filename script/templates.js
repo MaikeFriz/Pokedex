@@ -1,8 +1,9 @@
 //Template render basic Pokemon-Info
 function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, index){
+    let pokemonNumber = offset + index + 1;
     return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
         <div class="background_head_card">
-            <h2> #${index + 1}  ${name}</h2>
+            <h2> #${pokemonNumber}  ${name}</h2>
         </div>
         <div class="background_img_card ${typeClass}">
             <img class="pkm_img_card" src="${sprite}" alt="${sprite}" />

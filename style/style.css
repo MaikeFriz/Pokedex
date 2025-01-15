@@ -41,6 +41,7 @@ header{
 }
 a{
     color: white;
+    text-decoration: none;
 }
 .main{
     flex-grow: 1;
@@ -126,3 +127,36 @@ a{
     box-shadow: 0 0 4px white;
 }
 
+#loading_spinner{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.69);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999; /* Über anderen Elementen */
+}
+
+.loading_spinner_img {
+    width: 250px; 
+    height: auto;
+    animation: spin 1s linear infinite; /* Rotation */
+}
+
+#loading_spinner p{
+    color: white;
+    font-size: 32px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

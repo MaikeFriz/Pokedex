@@ -1,7 +1,9 @@
 let BASE_URL = "https://pokeapi.co/api/v2/";
+let offset = 0;
+let limit = 20;
 let allPokemons = [];
 let typeImages = {
-    bug: "./assets/imgs/bug.png", 
+    bug: "./assets/imgs/bug.png",
     dark: "./assets/imgs/dark.png",
     dragon: "./assets/imgs/dragon.png",
     electric: "./assets/imgs/electric.png",
@@ -25,9 +27,12 @@ function init() {
     fetchPokemons();
 }
 
+// Load and show infos Pokemons --------------------------------------------------------------------------------
+
 async function fetchPokemons() {
+    togglSpinner(true);
     try {
-        let response = await fetch(`${BASE_URL}pokemon?limit=20&offset=0`);
+        let response = await fetch(`${BASE_URL}pokemon?limit=${limit}&offset=${offset}`);
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
@@ -35,13 +40,13 @@ async function fetchPokemons() {
         allPokemons = await fetchPokemonDetails(responseToJson.results); // Fetch Details für jedes Pokémon
         console.log(allPokemons);
         renderPokemons();
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error fetching Pokemons:", error);
+    } finally {
+        togglSpinner(false); // Hide the spinner after fetching is complete
     }
 }
 
-// Fetch Details für jedes Pokémon
 async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array das von responseToJson.results uebergeben wird.
     let detailedPokemons = []; //leeres Array in das die detailierten Pokemon-Daten gespeichert werden
     for (let pokemon of pokemonList) { //Schleife durch jedes Pokemon in Pokemonlist
@@ -60,7 +65,7 @@ async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array da
             let ability_2 = abilities[1] ? abilities[1].ability.name : "unknown";
             let typeClass = `type-${type}`;
             detailedPokemons.push({
-                sprites: details.sprites.front_default, 
+                sprites: details.sprites.front_default,
                 name: details.name,
                 type: type,
                 typeClass: typeClass,
@@ -70,7 +75,7 @@ async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array da
                 height: height,
                 weight: weight,
                 ability_1: ability_1,
-                ability_2, ability_2,
+                ability_2: ability_2,
             });
         }
     }
@@ -83,33 +88,31 @@ async function renderPokemons() {
     }
     let displayPokemonsRef = document.getElementById('display_pokemons_container');
     let cardOverlay = document.getElementById('overlay_card_info');
-    displayPokemonsRef.innerHTML = "";
-    cardOverlay.innerHTML = "";
-    for(let index = 0; index < allPokemons.length; index++){
+    for (let index = 0; index < allPokemons.length; index++) {
         displayPokemonsRef.innerHTML += basicTemplate(
-            allPokemons[index].name, 
-            allPokemons[index].sprites, 
-            allPokemons[index].typeClass, 
-            allPokemons[index].type, 
-            allPokemons[index].typeSecond, 
-            allPokemons[index].height, 
-            allPokemons[index].weight, 
-            allPokemons[index].ability_1, 
-            allPokemons[index].ability_2, 
-            allPokemons[index].typeImg, 
-            allPokemons[index].typeImgSecond, 
+            allPokemons[index].name,
+            allPokemons[index].sprites,
+            allPokemons[index].typeClass,
+            allPokemons[index].type,
+            allPokemons[index].typeSecond,
+            allPokemons[index].height,
+            allPokemons[index].weight,
+            allPokemons[index].ability_1,
+            allPokemons[index].ability_2,
+            allPokemons[index].typeImg,
+            allPokemons[index].typeImgSecond,
             index);
         cardOverlay.innerHTML = templateCardOverlay(
-            allPokemons[index].name, 
-            allPokemons[index].sprites, 
-            allPokemons[index].typeClass, 
-            allPokemons[index].type, 
-            allPokemons[index].typeSecond, 
-            allPokemons[index].height, 
-            allPokemons[index].weight, 
-            allPokemons[index].ability_1, 
-            allPokemons[index].ability_2, 
-            allPokemons[index].typeImg, 
+            allPokemons[index].name,
+            allPokemons[index].sprites,
+            allPokemons[index].typeClass,
+            allPokemons[index].type,
+            allPokemons[index].typeSecond,
+            allPokemons[index].height,
+            allPokemons[index].weight,
+            allPokemons[index].ability_1,
+            allPokemons[index].ability_2,
+            allPokemons[index].typeImg,
             allPokemons[index].typeImgSecond);
     }
 }
