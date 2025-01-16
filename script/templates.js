@@ -1,5 +1,5 @@
 //Template render basic Pokemon-Info
-function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, index){
+function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, index) {
     let pokemonNumber = offset + index + 1;
     return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
         <div class="background_head_card">
@@ -22,7 +22,7 @@ function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight
 }
 
 //Template Overlay Card Pokemon-Info
-function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond){
+function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond) {
     return `<div onclick="eventBubblingOverlayCardInfo(event)" class="card_pokemon_info_overlay">
     <div class="head_section_overlay">
         <h1> ${name}</h1>
@@ -39,11 +39,11 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
         <table>
             <tr>
                 <td>Height:</td>
-                <td>${(height/ 10).toFixed(1)} m</td>
+                <td>${(height / 10).toFixed(1)} m</td>
             </tr>
             <tr>
                 <td>Weight:</td>
-                <td>${(weight/ 10).toFixed(1)} kg</td>
+                <td>${(weight / 10).toFixed(1)} kg</td>
             </tr>
             <tr>
                 <td>Abilities:</td>
@@ -65,4 +65,15 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
     ${typeSecond !== "unknown" ? `<img class="symbol_element_card_overlay" src="${typeImgSecond}" alt="${typeSecond} type image"/>` : ""}
     </div>
 </div>`;
+}
+
+function alertInvalidInput() {
+    return `
+    <div class="alert_invalid_input">
+        <p>Sorry, but we couldn't find a matching Pokémon name.</p>
+        <div class="button_div_search">
+            <button onclick="resetSearch()">Reset Search</button>
+        </div>
+    </div>
+    `;
 }

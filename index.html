@@ -19,12 +19,12 @@
 <body onload="init()">
     <header>
         <img class="logo_header" id="top_of_page" src="./assets/imgs/pokebal_2.jpg">
-        <h1>Pokedex</h1>
+        <h1 class="headline">Pokedex</h1>
     </header>
     <div class="main">
         <div class="searchbox"> 
             <input id="pokemonName_input" type="text" placeholder="Search Pokemon by name">
-            <button id="search_button">🔎</button>
+            <button onclick="searchPokemon()" id="search_button">🔎</button>
         </div>
         <div id="display_pokemons_container" class="display_pokemons_container">
 

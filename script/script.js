@@ -2,6 +2,7 @@ let BASE_URL = "https://pokeapi.co/api/v2/";
 let offset = 0;
 let limit = 20;
 let allPokemons = [];
+let arraySearchedPokemon = [];
 let typeImages = {
     bug: "./assets/imgs/bug.png",
     dark: "./assets/imgs/dark.png",
@@ -17,7 +18,7 @@ let typeImages = {
     ice: "./assets/imgs/ice.png",
     normal: "./assets/imgs/normal.png",
     poison: "./assets/imgs/poison.png",
-    psycic: "./assets/imgs/psycic.png",
+    psychic: "./assets/imgs/psycic.png",
     rock: "./assets/imgs/rock.png",
     steel: "./assets/imgs/steel.png",
     water: "./assets/imgs/water.png",
@@ -28,7 +29,6 @@ function init() {
 }
 
 // Load and show infos Pokemons --------------------------------------------------------------------------------
-
 async function fetchPokemons() {
     togglSpinner(true);
     try {
@@ -115,6 +115,51 @@ async function renderPokemons() {
             allPokemons[index].typeImg,
             allPokemons[index].typeImgSecond);
     }
+}
+
+// Search for Pokemon --------------------------------------------------------------------------------
+function searchPokemon() {
+    let input = document.getElementById('pokemonName_input').value.trim().toLowerCase();
+    let displayPokemonsRef = document.getElementById('display_pokemons_container');
+    let filteredPokemons = allPokemons.filter(pokemon => pokemon.name.toLowerCase().includes(input));
+
+    if (input.length < 3 || filteredPokemons.length === 0) {
+        displayPokemonsRef.innerHTML = alertInvalidInput();
+        document.getElementById('button_div_main').classList.add('d_none'); //Funktioniert noch nicht
+        return;
+    } else {
+        renderSearchedPokemon(filteredPokemons);
+        document.getElementById('button_div_main').classList.add('d_none'); //Funktioniert noch nicht
+        return;
+    }
+}
+
+function renderSearchedPokemon(filteredPokemons) {
+    let displayPokemonsRef = document.getElementById('display_pokemons_container');
+    displayPokemonsRef.innerHTML = "";
+
+    for (let index = 0; index < filteredPokemons.length; index++) {
+        displayPokemonsRef.innerHTML += basicTemplate(
+            filteredPokemons[index].name,
+            filteredPokemons[index].sprites,
+            filteredPokemons[index].typeClass,
+            filteredPokemons[index].type,
+            filteredPokemons[index].typeSecond,
+            filteredPokemons[index].height,
+            filteredPokemons[index].weight,
+            filteredPokemons[index].ability_1,
+            filteredPokemons[index].ability_2,
+            filteredPokemons[index].typeImg,
+            filteredPokemons[index].typeImgSecond,
+            index
+        );
+    }
+}
+
+function resetSearch() {
+    fetchPokemons();
+    document.getElementById('pokemonName_input').value = "";
+    document.getElementById('display_pokemons_container').innerHTML = "";
 }
 
 
