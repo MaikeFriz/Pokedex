@@ -95,24 +95,6 @@
     transform: scale(1.3);
 }
 
-.menu_overlay {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 8px;
-}
-
-.menu_overlay span {
-    font-size: 40px;
-    transform: scale(1);
-    cursor: pointer;
-}
-
-.menu_overlay span:hover {
-    transform: scale(1.2);
-}
-
 .arrow_section_overlay {
     display: flex;
     justify-content: center;
@@ -172,3 +154,89 @@
     margin-top: 12px;
 
 }
+
+.tooltiptext_type_symbol {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Tooltip position */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.symbol_element_card_overlay_div {
+    position: relative;
+    display: inline-block;
+}
+
+.symbol_element_card_overlay_div:hover .tooltiptext_type_symbol {
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu_overlay {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 8px;
+}
+
+.menu_item {
+    position: relative; /* Set positioning context for tooltip */
+    display: inline-block;
+}
+
+.material-symbols-outlined {
+    font-size: 40px;
+    transform: scale(1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.material-symbols-outlined:hover {
+    transform: scale(1.2);
+}
+
+.tooltiptext_menu_overlay {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Tooltip position */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.menu_item:hover .tooltiptext_menu_overlay {
+    visibility: visible;
+    opacity: 1; /* Tooltip fade-in effect */
+}
+
+.stats_tab_d_none{
+    display: none;
+}
+
+.info_tab_d_none{
+    display: none;
+}
+
+.cries_tab_d_none{
+    display: none;
+}
+

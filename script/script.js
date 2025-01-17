@@ -54,16 +54,16 @@ async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array da
         let response = await fetch(pokemon.url); //url des pokemon aufrufen
         if (response.ok) {
             let details = await response.json();
-            let type = details.types && details.types[0] ? details.types[0].type.name : "unknown";
-            let typeSecond = details.types && details.types[1] ? details.types[1].type.name : "unknown";
+            let type = details.types && details.types[0] ? details.types[0].type.name : "";
+            let typeSecond = details.types && details.types[1] ? details.types[1].type.name : "";
             let typeImg = typeImages[type];
             let typeImgSecond = typeImages[typeSecond];
-            let height = details.height ? details.height : "unknown";
-            let weight = details.weight ? details.weight : "unknown";
+            let height = details.height ? details.height : "";
+            let weight = details.weight ? details.weight : "";
             let abilities = details.abilities || []; // Sichere Abfrage
-            let ability_1 = abilities[0] ? abilities[0].ability.name : "unknown";
-            let ability_2 = abilities[1] ? abilities[1].ability.name : "unknown";
-            let typeClass = `type-${type}`;
+            let ability_1 = abilities[0] ? abilities[0].ability.name : "";
+            let ability_2 = abilities[1] ? abilities[1].ability.name : "";
+            let typeClass = `type-${type}`;          
             detailedPokemons.push({
                 sprites: details.sprites.front_default,
                 name: details.name,
@@ -113,8 +113,9 @@ async function renderPokemons() {
             allPokemons[index].ability_1,
             allPokemons[index].ability_2,
             allPokemons[index].typeImg,
-            allPokemons[index].typeImgSecond);
-    }
+            allPokemons[index].typeImgSecond,
+        )
+}
 }
 
 // Search for Pokemon --------------------------------------------------------------------------------
@@ -162,5 +163,24 @@ function resetSearch() {
     document.getElementById('display_pokemons_container').innerHTML = "";
 }
 
+
+// Switch Tabs Overlay --------------------------------------------------------------------------------
+function openStatsTab(){
+    document.getElementById('stats_tab').classList.remove('stats_tab_d_none');
+    document.getElementById('info_tab').classList.add('info_tab_d_none');
+    document.getElementById('cries_tab').classList.add('info_tab_d_none');
+}
+
+function openInfoTab(){
+    document.getElementById('stats_tab').classList.add('stats_tab_d_none');
+    document.getElementById('info_tab').classList.remove('info_tab_d_none');
+    document.getElementById('cries_tab').classList.add('info_tab_d_none');
+}
+
+function openCriesTab(){
+    document.getElementById('stats_tab').classList.add('stats_tab_d_none');
+    document.getElementById('info_tab').classList.add('info_tab_d_none');
+    document.getElementById('cries_tab').classList.remove('info_tab_d_none');
+}
 
 

@@ -14,8 +14,8 @@ function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight
                 <img class="symbol_element_card" src="${typeImg}">
             </div>
             <div class="element_pair">
-                ${typeSecond !== "unknown" ? `<p>${typeSecond}</p>` : ""}
-                ${typeSecond !== "unknown" ? `<img class="symbol_element_card" src="${typeImgSecond}" alt="${typeSecond} type image" />` : ""}
+                ${typeSecond !== "" ? `<p>${typeSecond}</p>` : ""}
+                ${typeSecond !== "" ? `<img class="symbol_element_card" src="${typeImgSecond}" alt="${typeSecond} type image" />` : ""}
             </div>
         </div>
     </div>`;
@@ -29,12 +29,22 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
         <img onclick="closeOverlayCardInfo()" class="close_button" src="./assets/imgs/close_button.jpg" alt="">
     </div>
     <div class="menu_overlay">
-        <span class="material-symbols-outlined">info</span>
-        <span class="material-symbols-outlined">monitoring</span>
-        <span class="material-symbols-outlined">volume_up</span>
+    <div class="menu_item">
+        <span onclick="openInfoTab()" class="material-symbols-outlined">info</span>
+        <span class="tooltiptext_menu_overlay">Info</span>
     </div>
+    <div class="menu_item">
+        <span onclick="openStatsTab()" class="material-symbols-outlined">monitoring</span>
+        <span class="tooltiptext_menu_overlay">Statistics</span>
+    </div>
+    <div class="menu_item">
+        <span onclick="openCriesTab()" class="material-symbols-outlined">volume_up</span>
+        <span class="tooltiptext_menu_overlay">Cryes</span>
+    </div>
+</div>
     <div class="background_img_card_overlay ${typeClass}">
         <!-- Info Tab -->
+        <div id="info_tab">
         <h2>Information</h2>
         <table>
             <tr>
@@ -51,18 +61,42 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
             </tr>
             <tr>
                 <td>Types:</td>
-                <td>${type}, ${typeSecond}</td>
+                <td>${type}${typeSecond && typeSecond !== "unknowen" ? `, ${typeSecond}` : ""}</td>
             </tr>
         </table>
         <div class="arrow_section_overlay">
             <img onclick="nextPokemonLeft()" class="next_arrow_overlay" src="./assets/imgs/arrow_left.png" alt="next">
             <img class="pkm_img_card_overlay" src="${sprite}" alt="${sprite}" />
             <img onclick="nextPokemonRight()" class="next_arrow_overlay" src="./assets/imgs/arrow_right.png" alt="next">
-        </div>    
+        </div>  
+        </div>
+
+        <!--Statistics Tab -->
+        <div id="stats_tab" class="stats_tab_d_none">
+            <div class="category_statistic">
+                <p>Test Stats</p>
+            </div>
+        </div>
+
+        <!--Cryes Tab -->
+        <div id="cries_tab" class="info_tab_d_none">
+            <div class="category_cries">
+                <p>Test Cries</p>
+            </div>
+        </div>
+
     </div>
     <div class="card_lower_info_section">
-    <img class="symbol_element_card_overlay" src="${typeImg}">
-    ${typeSecond !== "unknown" ? `<img class="symbol_element_card_overlay" src="${typeImgSecond}" alt="${typeSecond} type image"/>` : ""}
+        <div class="card_lower_info_section">
+            <div class="symbol_element_card_overlay_div">
+                <img class="symbol_element_card_overlay" src="${typeImg}">
+                <span class="tooltiptext_type_symbol">${type}</span>
+            </div>
+            <div class="symbol_element_card_overlay_div">
+                ${typeSecond !== "" ? `<img class="symbol_element_card_overlay" src="${typeImgSecond}" alt="${typeSecond} type image"/>` : ""}
+                <span class="tooltiptext_type_symbol">${typeSecond}</span>
+            </div>
+        </div>
     </div>
 </div>`;
 }
