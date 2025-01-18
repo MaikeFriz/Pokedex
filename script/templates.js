@@ -1,9 +1,9 @@
 //Template render basic Pokemon-Info
-function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, index) {
+function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, index) {
     let pokemonNumber = offset + index + 1;
     return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
         <div class="background_head_card">
-            <h2> #${pokemonNumber}  ${name}</h2>
+            <h2> #${pokemonNumber}  ${name.toUpperCase()}</h2>
         </div>
         <div class="background_img_card ${typeClass}">
             <img class="pkm_img_card" src="${sprite}" alt="${sprite}" />
@@ -22,10 +22,10 @@ function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight
 }
 
 //Template Overlay Card Pokemon-Info
-function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond) {
+function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats) {
     return `<div onclick="eventBubblingOverlayCardInfo(event)" class="card_pokemon_info_overlay">
     <div class="head_section_overlay">
-        <h1> ${name}</h1>
+        <h1> ${name.toUpperCase()}</h1>
         <img onclick="closeOverlayCardInfo()" class="close_button" src="./assets/imgs/close_button.jpg" alt="">
     </div>
     <div class="menu_overlay">
@@ -74,7 +74,34 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
         <!--Statistics Tab -->
         <div id="stats_tab" class="stats_tab_d_none">
             <div class="category_statistic">
-                <p>Test Stats</p>
+                <p class="category_name_statistic">${stats[0].name.toUpperCase()}</p>
+                <progress class="progress_bar_stats" id="myProgress" value="${stats[0].base_stat}" max="100"></progress>
+                <p class="progress-value">${stats[0].base_stat} %</p>
+            </div>
+            <div class="category_statistic">
+                <p class="category_name_statistic">${stats[1].name.toUpperCase()}</p>
+                <progress class="progress_bar_stats" id="myProgress" value="${stats[1].base_stat}" max="100"></progress>
+                <p class="progress-value">${stats[1].base_stat} %</p>
+            </div>
+            <div class="category_statistic">
+                <p class="category_name_statistic">${stats[2].name.toUpperCase()}</p>
+                <progress class="progress_bar_stats" id="myProgress" value="${stats[2].base_stat}" max="100"></progress>
+                <p class="progress-value">${stats[2].base_stat} %</p>
+            </div>
+            <div class="category_statistic">
+                <p class="category_name_statistic">${stats[3].name.toUpperCase()}</p>
+                <progress class="progress_bar_stats" id="myProgress" value="${stats[3].base_stat}" max="100"></progress>
+                <p class="progress-value">${stats[3].base_stat} %</p>
+            </div>
+            <div class="category_statistic">
+                <p class="category_name_statistic">${stats[4].name.toUpperCase()}</p>
+                <progress class="progress_bar_stats" id="myProgress" value="${stats[4].base_stat}" max="100"></progress>
+                <p class="progress-value">${stats[4].base_stat} %</p>
+            </div>
+            <div class="category_statistic">
+                <p class="category_name_statistic">${stats[5].name.toUpperCase()}</p>
+                <progress class="progress_bar_stats" id="myProgress" value="${stats[5].base_stat}" max="100"></progress>
+                <p class="progress-value">${stats[5].base_stat} %</p>
             </div>
         </div>
 

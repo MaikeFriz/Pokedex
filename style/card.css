@@ -25,6 +25,7 @@
 
 .pkm_img_card:hover {
     transform: scale(1.3);
+    filter: drop-shadow(0px -8px 16px #ffffff);
 }
 
 .background_img_card {
@@ -46,7 +47,7 @@
     font-size: 24px;
 }
 
-.element_pair{
+.element_pair {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,7 +69,7 @@
     cursor: auto;
 }
 
-.card_pokemon_info_overlay h1{
+.card_pokemon_info_overlay h1 {
     color: rgb(143, 143, 14);
 }
 
@@ -81,7 +82,7 @@
     gap: 0;
 }
 
-.background_img_card_overlay table{
+.background_img_card_overlay table {
     border-spacing: 32px 0;
 }
 
@@ -93,6 +94,7 @@
 
 .pkm_img_card_overlay:hover {
     transform: scale(1.3);
+    filter: drop-shadow(0px -8px 16px #ffffff);
 }
 
 .arrow_section_overlay {
@@ -119,27 +121,34 @@
     height: 100px;
 }
 
-.symbol_element_card{
+.symbol_element_card {
     height: 24px;
     width: auto;
 }
 
-.symbol_element_card_overlay{
+.symbol_element_card_overlay {
     height: 48px;
     width: auto;
     transform: scale(1)
 }
 
-.symbol_element_card_overlay:hover{
+.symbol_element_card_overlay:hover {
     height: 48px;
     width: auto;
     transform: scale(1.2)
 }
-.head_section_overlay{
+
+.head_section_overlay {
     display: flex;
     justify-content: center;
 }
-.close_button{
+
+.head_section_overlay h1 {
+    width: 100px;
+    height: auto;
+}
+
+.close_button {
     height: 32px;
     width: auto;
     transform: translateX(170px) !important;
@@ -148,7 +157,7 @@
     margin-top: 12px;
 }
 
-.close_button:hover{
+.close_button:hover {
     transform: scale(1.1) !important;
     transform: translateX(170px) !important;
     margin-top: 12px;
@@ -165,7 +174,8 @@
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Tooltip position */
+    bottom: 125%;
+    /* Tooltip position */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -191,7 +201,8 @@
 }
 
 .menu_item {
-    position: relative; /* Set positioning context for tooltip */
+    position: relative;
+    /* Set positioning context for tooltip */
     display: inline-block;
 }
 
@@ -216,7 +227,8 @@
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* Tooltip position */
+    bottom: 125%;
+    /* Tooltip position */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -225,18 +237,54 @@
 
 .menu_item:hover .tooltiptext_menu_overlay {
     visibility: visible;
-    opacity: 1; /* Tooltip fade-in effect */
+    opacity: 1;
+    /* Tooltip fade-in effect */
 }
 
-.stats_tab_d_none{
+.stats_tab_d_none {
     display: none;
 }
 
-.info_tab_d_none{
+.info_tab_d_none {
     display: none;
 }
 
-.cries_tab_d_none{
+.cries_tab_d_none {
     display: none;
 }
 
+.category_statistic {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 0;
+}
+
+.category_name_statistic {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    width: 130px;
+}
+
+.progress-value {
+    color: white;
+}
+
+.progress_bar_stats::-webkit-progress-bar {
+    background-color: transparent;
+    border-radius: 25px;
+}
+
+.progress_bar_stats::-webkit-progress-value {
+    background-color: rgb(143, 143, 14);
+    border-radius: 25px;
+    border: white solid 1px;
+}
+
+.progress_bar_stats{
+    height: 16px;
+    border-radius: 25px;
+    margin-right: 8px;
+    border: white solid 1px;
+}

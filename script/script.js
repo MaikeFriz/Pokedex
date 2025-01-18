@@ -60,10 +60,14 @@ async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array da
             let typeImgSecond = typeImages[typeSecond];
             let height = details.height ? details.height : "";
             let weight = details.weight ? details.weight : "";
-            let abilities = details.abilities || []; // Sichere Abfrage
+            let abilities = details.abilities || [];
             let ability_1 = abilities[0] ? abilities[0].ability.name : "";
             let ability_2 = abilities[1] ? abilities[1].ability.name : "";
-            let typeClass = `type-${type}`;          
+            let typeClass = `type-${type}`;  
+            let stats = details.stats.map(statObj => ({
+                name: statObj.stat.name,
+                base_stat: statObj.base_stat,
+            }));
             detailedPokemons.push({
                 sprites: details.sprites.front_default,
                 name: details.name,
@@ -76,6 +80,7 @@ async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array da
                 weight: weight,
                 ability_1: ability_1,
                 ability_2: ability_2,
+                stats: stats,
             });
         }
     }
@@ -101,6 +106,7 @@ async function renderPokemons() {
             allPokemons[index].ability_2,
             allPokemons[index].typeImg,
             allPokemons[index].typeImgSecond,
+            allPokemons[index].stats,
             index);
         cardOverlay.innerHTML = templateCardOverlay(
             allPokemons[index].name,
@@ -114,6 +120,7 @@ async function renderPokemons() {
             allPokemons[index].ability_2,
             allPokemons[index].typeImg,
             allPokemons[index].typeImgSecond,
+            allPokemons[index].stats,
         )
 }
 }
@@ -126,11 +133,11 @@ function searchPokemon() {
 
     if (input.length < 3 || filteredPokemons.length === 0) {
         displayPokemonsRef.innerHTML = alertInvalidInput();
-        document.getElementById('button_div_main').classList.add('d_none'); //Funktioniert noch nicht
+        document.getElementById('button_div_main').classList.add('d_none');
         return;
     } else {
         renderSearchedPokemon(filteredPokemons);
-        document.getElementById('button_div_main').classList.add('d_none'); //Funktioniert noch nicht
+        document.getElementById('button_div_main').classList.add('d_none'); 
         return;
     }
 }
@@ -151,8 +158,8 @@ function renderSearchedPokemon(filteredPokemons) {
             filteredPokemons[index].ability_1,
             filteredPokemons[index].ability_2,
             filteredPokemons[index].typeImg,
-            filteredPokemons[index].typeImgSecond,
-            index
+            filteredPokemons[index].stats,
+            index,
         );
     }
 }
@@ -162,7 +169,6 @@ function resetSearch() {
     document.getElementById('pokemonName_input').value = "";
     document.getElementById('display_pokemons_container').innerHTML = "";
 }
-
 
 // Switch Tabs Overlay --------------------------------------------------------------------------------
 function openStatsTab(){
