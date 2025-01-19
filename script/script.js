@@ -145,7 +145,10 @@ function searchPokemon() {
         document.getElementById('button_div_main').style.display = "none";
         return;
     } else {
+        let displayPokemonsRef = document.getElementById('display_pokemons_container');
         renderSearchedPokemon(filteredPokemons);
+        displayPokemonsRef.innerHTML += templateAddResetButtonAfterSearch();
+        document.getElementById('display_pokemons_container').classList.add('flex_display_pokemon_container')
         document.getElementById('button_div_main').style.display = "none"; 
         return;
     }
@@ -180,6 +183,8 @@ function resetSearch() {
     fetchPokemons();
     document.getElementById('pokemonName_input').value = "";
     document.getElementById('display_pokemons_container').innerHTML = "";
+    document.getElementById('display_pokemons_container').classList.remove('flex_display_pokemon_container')
+
 }
 
 // Switch Tabs Overlay --------------------------------------------------------------------------------

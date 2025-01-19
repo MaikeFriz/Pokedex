@@ -142,3 +142,11 @@ function alertInvalidInput() {
     </div>
     `;
 }
+
+function templateAddResetButtonAfterSearch(){
+    return `
+            <div class="button_div_search">
+            <button onclick="resetSearch()">Reset Search</button>
+        </div>
+    `
+}
