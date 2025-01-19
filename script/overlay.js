@@ -17,7 +17,10 @@ function openOverlayCardInfo(index) {
         allPokemons[index].ability_2, 
         allPokemons[index].typeImg, 
         allPokemons[index].typeImgSecond,
-        allPokemons[index].stats);
+        allPokemons[index].stats,
+        allPokemons[index].criesLatest,
+        allPokemons[index].criesLegacy,
+    );
 }
 
 function closeOverlayCardInfo() {

@@ -1,5 +1,5 @@
 //Template render basic Pokemon-Info
-function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, index) {
+function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, index) {
     let pokemonNumber = offset + index + 1;
     return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
         <div class="background_head_card">
@@ -22,7 +22,7 @@ function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight
 }
 
 //Template Overlay Card Pokemon-Info
-function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats) {
+function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy) {
     return `<div onclick="eventBubblingOverlayCardInfo(event)" class="card_pokemon_info_overlay">
     <div class="head_section_overlay">
         <h1> ${name.toUpperCase()}</h1>
@@ -107,8 +107,12 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
 
         <!--Cryes Tab -->
         <div id="cries_tab" class="info_tab_d_none">
+            <h2 class="h2_cries">Cries</h2>
             <div class="category_cries">
-                <p>Test Cries</p>
+                <p>Latest Cry</p>
+                <audio controls volume="0.1" preload="none" src="${criesLatest}"></audio>
+                <p>Legacy Cry</p>
+                <audio controls volume="0.1" preload="none" src="${criesLegacy}"></audio>
             </div>
         </div>
 

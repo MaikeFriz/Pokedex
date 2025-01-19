@@ -68,8 +68,10 @@ async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array da
                 name: statObj.stat.name,
                 base_stat: statObj.base_stat,
             }));
+            let criesLatest = details.cries.latest;
+            let criesLegacy = details.cries.legacy;
             detailedPokemons.push({
-                sprites: details.sprites.front_default,
+                sprites: details.sprites.other["official-artwork"].front_default,
                 name: details.name,
                 type: type,
                 typeClass: typeClass,
@@ -81,6 +83,8 @@ async function fetchPokemonDetails(pokemonList) { //pokemonList ist ein Array da
                 ability_1: ability_1,
                 ability_2: ability_2,
                 stats: stats,
+                criesLatest: criesLatest,
+                criesLegacy: criesLegacy,
             });
         }
     }
@@ -107,7 +111,10 @@ async function renderPokemons() {
             allPokemons[index].typeImg,
             allPokemons[index].typeImgSecond,
             allPokemons[index].stats,
+            allPokemons[index].criesLatest,
+            allPokemons[index].criesLegacy,
             index);
+            /*
         cardOverlay.innerHTML = templateCardOverlay(
             allPokemons[index].name,
             allPokemons[index].sprites,
@@ -121,7 +128,9 @@ async function renderPokemons() {
             allPokemons[index].typeImg,
             allPokemons[index].typeImgSecond,
             allPokemons[index].stats,
-        )
+            allPokemons[index].criesLatest,
+            allPokemons[index].criesLegacy,
+        )*/
 }
 }
 
@@ -133,11 +142,11 @@ function searchPokemon() {
 
     if (input.length < 3 || filteredPokemons.length === 0) {
         displayPokemonsRef.innerHTML = alertInvalidInput();
-        document.getElementById('button_div_main').classList.add('d_none');
+        document.getElementById('button_div_main').style.display = "none";
         return;
     } else {
         renderSearchedPokemon(filteredPokemons);
-        document.getElementById('button_div_main').classList.add('d_none'); 
+        document.getElementById('button_div_main').style.display = "none"; 
         return;
     }
 }
@@ -158,7 +167,10 @@ function renderSearchedPokemon(filteredPokemons) {
             filteredPokemons[index].ability_1,
             filteredPokemons[index].ability_2,
             filteredPokemons[index].typeImg,
+            filteredPokemons[index].typeImgSecond,
             filteredPokemons[index].stats,
+            filteredPokemons[index].criesLatest,
+            filteredPokemons[index].criesLegacy,
             index,
         );
     }

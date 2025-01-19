@@ -62,6 +62,7 @@
     border-radius: 25px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     transform: scale(1);
     cursor: pointer;
@@ -80,10 +81,6 @@
     align-items: center;
     flex-direction: column;
     gap: 0;
-}
-
-.background_img_card_overlay table {
-    border-spacing: 32px 0;
 }
 
 .pkm_img_card_overlay {
@@ -151,17 +148,15 @@
 .close_button {
     height: 32px;
     width: auto;
-    transform: translateX(170px) !important;
+    transform: translateX(170px) scale(1);
     cursor: pointer;
-    transform: scale(1);
     margin-top: 12px;
+    transition: transform 0.3s ease;
 }
 
 .close_button:hover {
-    transform: scale(1.1) !important;
-    transform: translateX(170px) !important;
+    transform: translateX(170px) scale(1.1) rotate(90deg);
     margin-top: 12px;
-
 }
 
 .tooltiptext_type_symbol {
@@ -249,6 +244,18 @@
     display: none;
 }
 
+#info_tab{
+    width: 100%;
+}
+
+#info_tab table{
+    width: 100%;
+}
+
+#info_tab table td{
+    width: 60px;
+}
+
 .cries_tab_d_none {
     display: none;
 }
@@ -287,4 +294,9 @@
     border-radius: 25px;
     margin-right: 8px;
     border: white solid 1px;
+}
+
+.h2_cries{
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
