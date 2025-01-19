@@ -170,7 +170,6 @@
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    /* Tooltip position */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -197,7 +196,6 @@
 
 .menu_item {
     position: relative;
-    /* Set positioning context for tooltip */
     display: inline-block;
 }
 
@@ -223,7 +221,6 @@
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    /* Tooltip position */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -233,11 +230,15 @@
 .menu_item:hover .tooltiptext_menu_overlay {
     visibility: visible;
     opacity: 1;
-    /* Tooltip fade-in effect */
 }
 
 .stats_tab_d_none {
     display: none;
+}
+
+#stats_tab{
+    height: 100%;
+    width: auto;
 }
 
 .info_tab_d_none {
@@ -281,6 +282,7 @@
 .progress_bar_stats::-webkit-progress-bar {
     background-color: transparent;
     border-radius: 25px;
+    height: 16px;
 }
 
 .progress_bar_stats::-webkit-progress-value {

@@ -1,0 +1,67 @@
+@media(max-width: 580px){
+    .card_pokemon_info_overlay {
+        width: 220px;
+        height: auto;
+    }
+
+    .card_pokemon_info_overlay h1 {
+        font-size: 24px;
+    }
+
+    .close_button {
+        height: 20px;
+        width: auto;
+        transform: translateX(40px) scale(1);
+    }
+
+    .close_button:hover {
+        transform: translateX(40px) scale(1.1) rotate(90deg);
+    }
+
+    .pkm_img_card_overlay {
+        height: 64px;
+        width: auto;
+    }
+
+    .next_arrow_overlay {
+        height: 27px;
+        width: auto;
+    }
+
+    .arrow_section_overlay {
+        margin-top: 32px;
+        gap: 8px;
+    }
+
+    .category_statistic{
+        height: 24px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 16px;
+    }
+    .progress-value{
+        display: none;
+    }
+    #stats_tab{
+        margin-top: 24px;
+    }
+    .category_cries audio{
+        width: 200px;
+    }
+
+    .button_div_main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+}
+
+@media(max-width: 350px){
+    .card_pokemon_info{
+        width: 220px;
+        height: auto;
+    }
+}

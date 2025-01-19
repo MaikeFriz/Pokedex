@@ -25,6 +25,7 @@ footer p {
 footer img {
     height: 56px;
     width: auto;
+    padding-right: 16px;
 }
 
 header {
@@ -131,18 +132,23 @@ a {
     margin-bottom: 40px;
 }
 
-.button_div_main button {
+.button_div_main a {
     height: 40px;
     width: 240px;
     cursor: pointer;
     background-color: #0A222C;
+    border: 1px white solid;
     border-radius: 25px;
     font-size: 16px;
     color: white;
-    transform: scale(1)
+    transform: scale(1);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.button_div_main button:hover {
+.button_div_main a:hover {
     transform: scale(1.1);
     box-shadow: 0 0 4px white;
 }
@@ -183,14 +189,12 @@ a {
     align-items: center;
     flex-direction: column;
     z-index: 9999;
-    /* Über anderen Elementen */
 }
 
 .loading_spinner_img {
     width: 250px;
     height: auto;
     animation: spin 1s linear infinite;
-    /* Rotation */
 }
 
 #loading_spinner p {
@@ -227,5 +231,9 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.alert_invalid_input p{
+    text-align: center;
 }
 

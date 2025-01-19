@@ -106,7 +106,7 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
         </div>
 
         <!--Cryes Tab -->
-        <div id="cries_tab" class="info_tab_d_none">
+        <div id="cries_tab" class="cries_tab_d_none">
             <h2 class="h2_cries">Cries</h2>
             <div class="category_cries">
                 <p>Latest Cry</p>

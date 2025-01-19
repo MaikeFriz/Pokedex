@@ -28,6 +28,20 @@ function init() {
     fetchPokemons();
 }
 
+
+// Load Page --------------------------------------------------------------------------------
+function togglSpinner(show){
+    let spinner = document.getElementById('loading_spinner');
+    if (spinner){
+        spinner.style.display = show ? "flex" : "none";
+    }
+}
+
+function loadMorePkm(){
+    offset += limit;
+    fetchPokemons();
+}
+
 // Load and show infos Pokemons --------------------------------------------------------------------------------
 async function fetchPokemons() {
     togglSpinner(true);
@@ -114,23 +128,6 @@ async function renderPokemons() {
             allPokemons[index].criesLatest,
             allPokemons[index].criesLegacy,
             index);
-            /*
-        cardOverlay.innerHTML = templateCardOverlay(
-            allPokemons[index].name,
-            allPokemons[index].sprites,
-            allPokemons[index].typeClass,
-            allPokemons[index].type,
-            allPokemons[index].typeSecond,
-            allPokemons[index].height,
-            allPokemons[index].weight,
-            allPokemons[index].ability_1,
-            allPokemons[index].ability_2,
-            allPokemons[index].typeImg,
-            allPokemons[index].typeImgSecond,
-            allPokemons[index].stats,
-            allPokemons[index].criesLatest,
-            allPokemons[index].criesLegacy,
-        )*/
 }
 }
 
@@ -191,19 +188,19 @@ function resetSearch() {
 function openStatsTab(){
     document.getElementById('stats_tab').classList.remove('stats_tab_d_none');
     document.getElementById('info_tab').classList.add('info_tab_d_none');
-    document.getElementById('cries_tab').classList.add('info_tab_d_none');
+    document.getElementById('cries_tab').classList.add('cries_tab_d_none');
 }
 
 function openInfoTab(){
     document.getElementById('stats_tab').classList.add('stats_tab_d_none');
     document.getElementById('info_tab').classList.remove('info_tab_d_none');
-    document.getElementById('cries_tab').classList.add('info_tab_d_none');
+    document.getElementById('cries_tab').classList.add('cries_tab_d_none');
 }
 
 function openCriesTab(){
     document.getElementById('stats_tab').classList.add('stats_tab_d_none');
     document.getElementById('info_tab').classList.add('info_tab_d_none');
-    document.getElementById('cries_tab').classList.remove('info_tab_d_none');
+    document.getElementById('cries_tab').classList.remove('cries_tab_d_none');
 }
 
 
