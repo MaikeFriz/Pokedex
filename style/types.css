@@ -1,57 +1,57 @@
-.type-fire {
-    background-color: red;
+  .type-grass {
+    background-color: rgba(0, 128, 0, 0.886);
+  }
+
+  .type-fire {
+    background-color: rgb(243, 10, 10);
   }
   
   .type-water {
-    background-color: blue;
-  }
-  
-  .type-grass {
-    background-color: green;
+    background-color: rgb(7, 7, 250);
   }
   
   .type-electric {
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, 0.959);
   }
   
   .type-ice {
-    background-color: lightblue;
+    background-color: rgba(173, 216, 230, 0.926);
   }
   
   .type-fighting {
-    background-color: brown;
+    background-color: rgba(165, 42, 42, 0.927);
   }
   
   .type-poison {
-    background-color: purple;
+    background-color: rgb(134, 6, 134);
   }
   
   .type-ground {
-    background-color: burlywood;
+    background-color: rgb(211, 173, 124);
   }
   
   .type-flying {
-    background-color: skyblue;
+    background-color: rgb(124, 196, 225);
   }
   
   .type-psychic {
-    background-color: pink;
+    background-color: rgb(243, 179, 190);
   }
   
   .type-bug {
-    background-color: darkgreen;
+    background-color: rgb(4, 103, 4);
   }
   
   .type-rock {
-    background-color: gray;
+    background-color: rgb(116, 115, 115);
   }
   
   .type-ghost {
-    background-color: darkslateblue;
+    background-color: rgb(70, 59, 141);
   }
   
   .type-dragon {
-    background-color: darkorange;
+    background-color: rgb(243, 137, 7);
   }
   
   .type-dark {
@@ -59,13 +59,13 @@
   }
   
   .type-steel {
-    background-color: lightgray;
+    background-color: rgb(195, 190, 190);
   }
   
   .type-fairy {
-    background-color: lightpink;
+    background-color: rgb(239, 167, 178);
   }
   
   .type-normal {
-    background-color: brown;
+    background-color: rgb(155, 39, 39);
   }

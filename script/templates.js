@@ -1,9 +1,8 @@
 //Template render basic Pokemon-Info
-function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, index) {
-    let pokemonNumber = offset + index + 1;
+function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, id, index) {
     return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
-        <div class="background_head_card">
-            <h2> #${pokemonNumber}  ${name.toUpperCase()}</h2>
+        <div class="background_head_card ${typeClass}">
+            <h2> #${id}  ${name.toUpperCase()}</h2>
         </div>
         <div class="background_img_card ${typeClass}">
             <img class="pkm_img_card" src="${sprite}" alt="${sprite}" />
@@ -22,7 +21,7 @@ function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight
 }
 
 //Template Overlay Card Pokemon-Info
-function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy) {
+function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, index) {
     return `<div onclick="eventBubblingOverlayCardInfo(event)" class="card_pokemon_info_overlay">
     <div class="head_section_overlay">
         <h1> ${name.toUpperCase()}</h1>
@@ -132,21 +131,19 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
 </div>`;
 }
 
-function alertInvalidInput() {
-    return `
-    <div class="alert_invalid_input">
-        <p>Sorry, but we couldn't find a matching Pokémon name.</p>
-        <div class="button_div_search">
-            <button onclick="resetSearch()">Reset Search</button>
-        </div>
-    </div>
-    `;
-}
+// function templateAddResetButtonAfterSearch(){
+//     return `
+//             <div class="button_div_search">
+//             <button onclick="resetSearch()">Reset Search</button>
+//         </div>
+//     `
+// }
 
-function templateAddResetButtonAfterSearch(){
+
+function alertInvalidInput(){
     return `
-            <div class="button_div_search">
-            <button onclick="resetSearch()">Reset Search</button>
-        </div>
+    <div>
+        <p>Invalid Input, please enter at least 3 valid characters.</p>
+    </div>
     `
 }

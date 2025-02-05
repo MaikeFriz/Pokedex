@@ -20,6 +20,8 @@ function openOverlayCardInfo(index) {
         allPokemons[index].stats,
         allPokemons[index].criesLatest,
         allPokemons[index].criesLegacy,
+        allPokemons[index].id,
+        index,
     );
 }
 

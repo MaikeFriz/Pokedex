@@ -24,8 +24,8 @@
     </header>
     <div id="main" class="main">
         <div class="searchbox"> 
-            <input id="pokemonName_input" type="text" placeholder="Search Pokemon by name">
-            <button onclick="searchPokemon()" id="search_button">🔎</button>
+            <input id="pokemonName_input" type="text" placeholder="Enter Pokemon name">
+            <button id="search_button">🔎</button>
         </div>
         <div id="display_pokemons_container" class="display_pokemons_container">
 
@@ -40,6 +40,13 @@
         <img class="loading_spinner_img" src="./assets/imgs/pokebal.jpg">
         <p>... loading ...</p>
     </div>
+
+    <div class="alert_invalid_input d_none_reset_search_button" id="button_div_search">
+        <div class="button_div_search">
+            <button id="clear_search_button" onclick="resetSearch()">Reset Search</button>
+        </div>
+    </div>
+
     <div onclick="closeOverlayCardInfo()" id="overlay_card_info" class="overlay_card_info d_none"></div>
     <footer>
         <p>Created by Maike</p>

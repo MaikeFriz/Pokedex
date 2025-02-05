@@ -237,3 +237,7 @@ a {
     text-align: center;
 }
 
+.d_none_reset_search_button{
+    display: none;
+}
+
