@@ -5,67 +5,67 @@
   .type-fire {
     background-color: rgb(243, 10, 10);
   }
-  
+
   .type-water {
     background-color: rgb(7, 7, 250);
   }
-  
-  .type-electric {
-    background-color: rgba(255, 255, 0, 0.959);
+
+  .type-normal {
+    background-color: rgb(155, 39, 39);
   }
-  
-  .type-ice {
-    background-color: rgba(173, 216, 230, 0.926);
-  }
-  
-  .type-fighting {
-    background-color: rgba(165, 42, 42, 0.927);
-  }
-  
-  .type-poison {
-    background-color: rgb(134, 6, 134);
-  }
-  
-  .type-ground {
-    background-color: rgb(211, 173, 124);
-  }
-  
-  .type-flying {
-    background-color: rgb(124, 196, 225);
-  }
-  
-  .type-psychic {
-    background-color: rgb(243, 179, 190);
-  }
-  
+
   .type-bug {
     background-color: rgb(4, 103, 4);
   }
-  
-  .type-rock {
-    background-color: rgb(116, 115, 115);
+
+  .type-fighting {
+    background-color: rgba(165, 42, 42, 0.927);
   }
-  
-  .type-ghost {
-    background-color: rgb(70, 59, 141);
+
+  .type-electric {
+    background-color: rgba(255, 255, 0, 0.959);
   }
-  
-  .type-dragon {
-    background-color: rgb(243, 137, 7);
-  }
-  
-  .type-dark {
-    background-color: black;
-  }
-  
+
   .type-steel {
     background-color: rgb(195, 190, 190);
   }
-  
+
+  .type-dragon {
+    background-color: rgb(243, 137, 7);
+  }
+
+  .type-ice {
+    background-color: rgba(173, 216, 230, 0.926);
+  }
+
+  .type-psychic {
+    background-color: rgb(243, 179, 190);
+  }
+
+  .type-rock {
+    background-color: rgb(116, 115, 115);
+  }
+
+  .type-dark {
+    background-color: black;
+  }
+
+  .type-poison {
+    background-color: rgb(134, 6, 134);
+  }
+
+  .type-ground {
+    background-color: rgb(211, 173, 124);
+  }
+
+  .type-flying {
+    background-color: rgb(124, 196, 225);
+  }
+
   .type-fairy {
     background-color: rgb(239, 167, 178);
   }
-  
-  .type-normal {
-    background-color: rgb(155, 39, 39);
+
+  .type-ghost {
+    background-color: rgb(70, 59, 141);
   }

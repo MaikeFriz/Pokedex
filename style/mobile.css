@@ -5,17 +5,19 @@
     }
 
     .card_pokemon_info_overlay h1 {
-        font-size: 24px;
+        font-size: 12px;
+        padding-top: 12px;
+        padding-bottom: 8px;
     }
 
     .close_button {
         height: 20px;
         width: auto;
-        transform: translateX(40px) scale(1);
+        transform: translateX(70px) scale(1);
     }
 
     .close_button:hover {
-        transform: translateX(40px) scale(1.1) rotate(90deg);
+        transform: translateX(70px) scale(1.1) rotate(90deg);
     }
 
     .pkm_img_card_overlay {

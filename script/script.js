@@ -111,7 +111,6 @@ async function fetchPokemonDetails(pokemonList) {
     return detailedPokemons;
 }
 
-
 function loadMorePkm() {
     if (displayedPokemons.length < allPokemons.length) {
         renderPokemons();

@@ -137,26 +137,27 @@
 
 .head_section_overlay {
     display: flex;
-    justify-content: center;
+    padding-left: 16px;
 }
 
 .head_section_overlay h1 {
     width: 100px;
     height: auto;
     white-space: nowrap;
+    font-size: 28px;
 }
 
 .close_button {
     height: 32px;
     width: auto;
-    transform: translateX(170px) scale(1);
+    transform: translateX(340px) scale(1);
     cursor: pointer;
     margin-top: 12px;
     transition: transform 0.3s ease;
 }
 
 .close_button:hover {
-    transform: translateX(170px) scale(1.1) rotate(90deg);
+    transform: translateX(340px) scale(1.1) rotate(90deg);
     margin-top: 12px;
 }
 
