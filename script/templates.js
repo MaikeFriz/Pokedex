@@ -1,6 +1,6 @@
 //Template render basic Pokemon-Info
 function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, id, index) {
-    return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
+    return `<div onclick="openOverlayCardInfo(${id-1})" class="card_pokemon_info">
         <div class="background_head_card ${typeClass}">
             <h2> #${id}  ${name.toUpperCase()}</h2>
         </div>
@@ -64,9 +64,9 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
             </tr>
         </table>
         <div class="arrow_section_overlay">
-            <img onclick="nextPokemonLeft()" class="next_arrow_overlay" src="./assets/imgs/arrow_left.png" alt="next">
+            <img onclick="nextPokemonLeft(${index})" class="next_arrow_overlay" src="./assets/imgs/arrow_left.png" alt="next">
             <img class="pkm_img_card_overlay" src="${sprite}" alt="${sprite}" />
-            <img onclick="nextPokemonRight()" class="next_arrow_overlay" src="./assets/imgs/arrow_right.png" alt="next">
+            <img onclick="nextPokemonRight(${index})" class="next_arrow_overlay" src="./assets/imgs/arrow_right.png" alt="next">
         </div>  
         </div>
 
@@ -131,19 +131,14 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
 </div>`;
 }
 
-// function templateAddResetButtonAfterSearch(){
-//     return `
-//             <div class="button_div_search">
-//             <button onclick="resetSearch()">Reset Search</button>
-//         </div>
-//     `
-// }
-
-
 function alertInvalidInput(){
     return `
     <div>
-        <p>Invalid Input, please enter at least 3 valid characters.</p>
+        <p>Invalid Input, please enter at least 3 valid characters or an id number.</p>
     </div>
     `
+}
+
+function showNoResultsMessage(container) {
+    container.innerHTML = `<p>Sorry, but we couldn't find any Pokémon with this value.</p>`;
 }

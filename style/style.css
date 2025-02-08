@@ -69,7 +69,7 @@ a {
     font-size: 24px;
 }
 
-#pokemonName_input {
+#pokemon_input {
     height: 40px;
     width: 240px;
     cursor: pointer;
@@ -107,7 +107,7 @@ a {
 }
 
 .overlay_card_info {
-    background-color: #071820;
+    background-color: #071820ec;
     min-height: 100%;
     width: 100%;
     z-index: 100;
@@ -239,5 +239,10 @@ a {
 
 .d_none_reset_search_button{
     display: none;
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
 }
 

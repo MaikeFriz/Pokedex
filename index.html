@@ -15,8 +15,6 @@
 
     <link rel="icon" type="x-icon/image" href="./assets/imgs/favicon.ico">
 </head>
-
-
 <body onload="init()">
     <header>
         <img class="logo_header" id="top_of_page" src="./assets/imgs/pokebal_2.jpg">
@@ -24,8 +22,8 @@
     </header>
     <div id="main" class="main">
         <div class="searchbox"> 
-            <input id="pokemonName_input" type="text" placeholder="Enter Pokemon name">
-            <button id="search_button">🔎</button>
+            <input id="pokemon_input" type="text" placeholder="Search for Pokemon by valid criteria">
+            <button onclick="checkValidInput()" id="search_button">🔎</button>
         </div>
         <div id="display_pokemons_container" class="display_pokemons_container">
 
