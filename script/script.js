@@ -73,7 +73,6 @@ function processPokemonDetails(details, index) {
     let type = details.types?.[0]?.type.name || "";
     let typeSecond = details.types?.[1]?.type.name || "";
     let abilities = details.abilities || [];
-
     return {
         sprites: details.sprites.other["official-artwork"].front_default,
         name: details.name,
@@ -99,12 +98,19 @@ function processPokemonDetails(details, index) {
 
 async function fetchPokemonDetails(pokemonList) {
     let detailedPokemons = [];
-    for (let index = 0; index < pokemonList.length; index++) {
+    let index = 0;
+    while (index < pokemonList.length) {
         let details = await fetchSinglePokemonDetails(pokemonList[index]);
-        if (details) detailedPokemons.push(processPokemonDetails(details, index));
+        if (details && details.sprites && details.sprites.other["official-artwork"].front_default
+            && details.types?.length > 0 && details.abilities?.length > 0) {
+            
+            detailedPokemons.push(processPokemonDetails(details, index));
+        }
+        index++;
     }
     return detailedPokemons;
 }
+
 
 function loadMorePkm() {
     if (displayedPokemons.length < allPokemons.length) {
@@ -115,7 +121,6 @@ function loadMorePkm() {
 function renderPokemons() {
     let displayPokemonsRef = document.getElementById('display_pokemons_container');
     let nextPokemons = allPokemons.slice(displayedPokemons.length, displayedPokemons.length + displayLimit);
-
     for (let pokemon of nextPokemons) {
         displayPokemonsRef.innerHTML += basicTemplate(
             pokemon.name, pokemon.sprites, pokemon.typeClass,
@@ -123,7 +128,7 @@ function renderPokemons() {
             pokemon.weight, pokemon.ability_1, pokemon.ability_2,
             pokemon.typeImg, pokemon.typeImgSecond, pokemon.stats,
             pokemon.criesLatest, pokemon.criesLegacy, pokemon.id,
-            displayedPokemons.length
+            pokemon.index
         );
         displayedPokemons.push(pokemon);
     }
@@ -133,7 +138,6 @@ function renderPokemons() {
 function checkValidInput() {
     let inputPoke = document.getElementById('pokemon_input').value.trim().toLowerCase();
     let displayPokemonsRef = document.getElementById('display_pokemons_container');
-
     if (isNaN(inputPoke) && inputPoke.length < 3) { 
         displayPokemonsRef.innerHTML = alertInvalidInput();
         document.getElementById('button_div_search').classList.remove('d_none_reset_search_button');
@@ -164,19 +168,17 @@ function toggleSearchButtons() {
 function renderFoundPokemons() {
     let displayFoundPokemon = document.getElementById('display_pokemons_container');
     displayFoundPokemon.innerHTML = "";
-
     if (foundPokemonsBySearch.length === 0) {
         showNoResultsMessage(displayFoundPokemon);
         return;
     }
-
     toggleSearchButtons();
     foundPokemonsBySearch.forEach((pokemon, index) => {
         displayFoundPokemon.innerHTML += basicTemplate(
             pokemon.name, pokemon.sprites, pokemon.typeClass, pokemon.type,
             pokemon.typeSecond, pokemon.height, pokemon.weight, pokemon.ability_1,
             pokemon.ability_2, pokemon.typeImg, pokemon.typeImgSecond, 
-            pokemon.stats, pokemon.criesLatest, pokemon.criesLegacy, pokemon.id, index
+            pokemon.stats, pokemon.criesLatest, pokemon.criesLegacy, pokemon.id, pokemon.index
         );
     });
 }
@@ -208,5 +210,3 @@ function openCriesTab() {
     document.getElementById('info_tab').classList.add('info_tab_d_none');
     document.getElementById('cries_tab').classList.remove('cries_tab_d_none');
 }
-
-

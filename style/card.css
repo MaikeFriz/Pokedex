@@ -143,6 +143,7 @@
 .head_section_overlay h1 {
     width: 100px;
     height: auto;
+    white-space: nowrap;
 }
 
 .close_button {
@@ -306,4 +307,5 @@
 .background_head_card{
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+    height: 80px;
 }

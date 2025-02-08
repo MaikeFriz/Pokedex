@@ -31,5 +31,5 @@ function nextPokemonRight(index) {
 
 function nextPokemonLeft(index) {
     index = (index - 1 + allPokemons.length) % allPokemons.length;
-    openOverlayCardInfo(index);
+    openOverlayCardInfo(index); //hier einfuegen while schleife das naechstes angezeigt wird wenn name null
 }

@@ -64,4 +64,7 @@
         width: 220px;
         height: auto;
     }
+    .card_lower_info_section{
+        gap: 8px;
+    }
 }

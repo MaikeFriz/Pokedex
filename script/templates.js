@@ -1,6 +1,6 @@
-//Template render basic Pokemon-Info
+//Template render basic Pokemon --------------------------------------------------------------------------------
 function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, id, index) {
-    return `<div onclick="openOverlayCardInfo(${id-1})" class="card_pokemon_info">
+    return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
         <div class="background_head_card ${typeClass}">
             <h2> #${id}  ${name.toUpperCase()}</h2>
         </div>
@@ -20,7 +20,7 @@ function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight
     </div>`;
 }
 
-//Template Overlay Card Pokemon-Info
+//Template Overlay Card Pokemon --------------------------------------------------------------------------------
 function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, index) {
     return `<div onclick="eventBubblingOverlayCardInfo(event)" class="card_pokemon_info_overlay">
     <div class="head_section_overlay">
