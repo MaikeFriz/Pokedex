@@ -1,10 +1,8 @@
 let BASE_URL = "https://pokeapi.co/api/v2/";
 let offset = 0;
-let limit = 1307;
-let displayLimit = 20;
+let limit = 20;
 let allPokemons = [];
 let foundPokemonsBySearch = [];
-let displayedPokemons = [];
 let typeImages = {
     bug: "./assets/imgs/bug.png",
     dark: "./assets/imgs/dark.png",
@@ -39,28 +37,23 @@ function togglSpinner(show) {
 }
 
 // Load and show infos Pokemons --------------------------------------------------------------------------------
-async function fetchPokemonList() {
-    let response = await fetch(`${BASE_URL}pokemon?limit=${limit}&offset=${offset}`);
-    if (!response.ok) throw new Error(`Response status: ${response.status}`);
-    return response.json();
-}
-
-async function fetchAndProcessPokemons() {
-    let responseToJson = await fetchPokemonList();
-    allPokemons = await fetchPokemonDetails(responseToJson.results);
-    displayedPokemons = [];
-    renderPokemons();
-}
-
 async function fetchPokemons() {
     togglSpinner(true);
     try {
-        await fetchAndProcessPokemons();
+        let responseToJson = await fetchPokemonList();
+        allPokemons = allPokemons.concat(await fetchPokemonDetails(responseToJson.results, allPokemons.length));
+        renderPokemons();
     } catch (error) {
         console.error("Error fetching Pokemons:", error);
     } finally {
         togglSpinner(false);
     }
+}
+
+async function fetchPokemonList() {
+    let response = await fetch(`${BASE_URL}pokemon?limit=${limit}&offset=${offset}`);
+    if (!response.ok) throw new Error(`Response status: ${response.status}`);
+    return response.json();
 }
 
 async function fetchSinglePokemonDetails(pokemon) {
@@ -89,48 +82,44 @@ function processPokemonDetails(details, index) {
             name: stat.stat.name,
             base_stat: stat.base_stat,
         })),
-        criesLatest: details.cries.latest,
-        criesLegacy: details.cries.legacy,
+        criesLatest: details.cries?.latest || "",
+        criesLegacy: details.cries?.legacy || "",
         id: details.id,
-        index: index,
+        index: index
     };
 }
 
-async function fetchPokemonDetails(pokemonList) {
+async function fetchPokemonDetails(pokemonList, start_index) {
     let detailedPokemons = [];
-    let index = 0;
-    while (index < pokemonList.length) {
-        let details = await fetchSinglePokemonDetails(pokemonList[index]);
-        if (details && details.sprites && details.sprites.other["official-artwork"].front_default
-            && details.types?.length > 0 && details.abilities?.length > 0) {
-            
-            detailedPokemons.push(processPokemonDetails(details, index));
+    for (let index = 0; index < pokemonList.length; index++) {
+        let pokemon = pokemonList[index];
+        let details = await fetchSinglePokemonDetails(pokemon);
+        if (details) {
+            detailedPokemons.push(processPokemonDetails(details, start_index + index));
         }
-        index++;
     }
     return detailedPokemons;
 }
 
-function loadMorePkm() {
-    if (displayedPokemons.length < allPokemons.length) {
-        renderPokemons();
-    }
-}
-
 function renderPokemons() {
     let displayPokemonsRef = document.getElementById('display_pokemons_container');
-    let nextPokemons = allPokemons.slice(displayedPokemons.length, displayedPokemons.length + displayLimit);
-    for (let pokemon of nextPokemons) {
-        displayPokemonsRef.innerHTML += basicTemplate(
-            pokemon.name, pokemon.sprites, pokemon.typeClass,
-            pokemon.type, pokemon.typeSecond, pokemon.height, 
-            pokemon.weight, pokemon.ability_1, pokemon.ability_2,
-            pokemon.typeImg, pokemon.typeImgSecond, pokemon.stats,
-            pokemon.criesLatest, pokemon.criesLegacy, pokemon.id,
-            pokemon.index
-        );
-        displayedPokemons.push(pokemon);
-    }
+    displayPokemonsRef.innerHTML = ""; 
+        for (let index = 0; index < allPokemons.length; index++) {
+            let pokemon = allPokemons[index];
+            displayPokemonsRef.innerHTML += basicTemplate(
+                pokemon.name, pokemon.sprites, pokemon.typeClass,
+                pokemon.type, pokemon.typeSecond, pokemon.height, 
+                pokemon.weight, pokemon.ability_1, pokemon.ability_2,
+                pokemon.typeImg, pokemon.typeImgSecond, pokemon.stats,
+                pokemon.criesLatest, pokemon.criesLegacy, pokemon.id, pokemon.index
+            );
+        }  
+}
+
+function loadMorePkm() {
+        offset += limit; 
+        fetchPokemons();
+        
 }
 
 // Search for Pokemon --------------------------------------------------------------------------------
