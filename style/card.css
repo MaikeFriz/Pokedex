@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 32px;
+    gap: 8px;
     padding: 0 16px;
     height: 80px;
     margin: 0 24px;
@@ -126,7 +126,8 @@
 .symbol_element_card_overlay {
     height: 48px;
     width: auto;
-    transform: scale(1)
+    transform: scale(1);
+    text-align: center;
 }
 
 .symbol_element_card_overlay:hover {

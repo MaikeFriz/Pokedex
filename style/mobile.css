@@ -61,6 +61,12 @@
 
 }
 
+@media(max-width: 380px){
+    #pokemon_input {
+        width: 180px;
+    }
+}
+
 @media(max-width: 350px){
     .card_pokemon_info{
         width: 220px;

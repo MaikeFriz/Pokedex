@@ -8,6 +8,8 @@ body {
     background-color: #071820;
     color: white;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     min-height: 100vh;
     margin: 0 24px;

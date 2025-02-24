@@ -51,6 +51,7 @@ a {
 
 .main {
     flex-grow: 1;
+    max-width: 1920px;
 }
 
 .flex_display_pokemon_container{
