@@ -6,9 +6,9 @@ function openOverlayCardInfo(index) {
     document.body.classList.add('no-scroll');
     cardOverlay.innerHTML = templateCardOverlay(
         pokemon.name, pokemon.sprites, pokemon.typeClass, 
-        pokemon.type, pokemon.typeSecond, pokemon.height, 
+        pokemon.types, pokemon.height, 
         pokemon.weight, pokemon.ability_1, pokemon.ability_2, 
-        pokemon.typeImg, pokemon.typeImgSecond, pokemon.stats,
+        pokemon.typeImgs, pokemon.stats,
         pokemon.criesLatest, pokemon.criesLegacy, index,
     );
     togglSpinner(false);

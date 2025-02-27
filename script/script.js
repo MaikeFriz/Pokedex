@@ -63,17 +63,14 @@ async function fetchSinglePokemonDetails(pokemon) {
 }
 
 function processPokemonDetails(details, index) {
-    let type = details.types?.[0]?.type.name || "";
-    let typeSecond = details.types?.[1]?.type.name || "";
+    let types = details.types.map(type => type.type.name);
     let abilities = details.abilities || [];
     return {
         sprites: details.sprites.other["official-artwork"].front_default,
         name: details.name,
-        type: type,
-        typeClass: `type-${type}`,
-        typeSecond: typeSecond,
-        typeImg: typeImages[type],
-        typeImgSecond: typeImages[typeSecond],
+        types: types,
+        typeClass: `type-${types[0]}`,
+        typeImgs: types.map(type => typeImages[type]),
         height: details.height || "",
         weight: details.weight || "",
         ability_1: abilities[0]?.ability.name || "",
@@ -108,9 +105,9 @@ function renderPokemons() {
             let pokemon = allPokemons[index];
             displayPokemonsRef.innerHTML += basicTemplate(
                 pokemon.name, pokemon.sprites, pokemon.typeClass,
-                pokemon.type, pokemon.typeSecond, pokemon.height, 
+                pokemon.types, pokemon.height, 
                 pokemon.weight, pokemon.ability_1, pokemon.ability_2,
-                pokemon.typeImg, pokemon.typeImgSecond, pokemon.stats,
+                pokemon.typeImgs, pokemon.stats,
                 pokemon.criesLatest, pokemon.criesLegacy, pokemon.id, pokemon.index
             );
         }  
@@ -138,8 +135,7 @@ function checkValidInput() {
 function searchForInput(inputPoke) {
     foundPokemonsBySearch = allPokemons.filter(poke =>
         poke.name.toLowerCase().includes(inputPoke) ||
-        poke.type.toLowerCase().includes(inputPoke) ||
-        poke.typeSecond.toLowerCase().includes(inputPoke) ||
+        poke.types.join(", ").toLowerCase().includes(inputPoke) ||
         poke.ability_1.toLowerCase().includes(inputPoke) ||
         poke.ability_2.toLowerCase().includes(inputPoke) ||
         poke.id === parseInt(inputPoke)
@@ -163,9 +159,8 @@ function renderFoundPokemons() {
     toggleSearchButtons();
     foundPokemonsBySearch.forEach((pokemon, index) => {
         displayFoundPokemon.innerHTML += basicTemplate(
-            pokemon.name, pokemon.sprites, pokemon.typeClass, pokemon.type,
-            pokemon.typeSecond, pokemon.height, pokemon.weight, pokemon.ability_1,
-            pokemon.ability_2, pokemon.typeImg, pokemon.typeImgSecond, 
+            pokemon.name, pokemon.sprites, pokemon.typeClass, pokemon.types, pokemon.height, pokemon.weight, pokemon.ability_1,
+            pokemon.ability_2, pokemon.typeImgs,
             pokemon.stats, pokemon.criesLatest, pokemon.criesLegacy, pokemon.id, pokemon.index
         );
     });

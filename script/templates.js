@@ -1,5 +1,5 @@
 //Template render basic Pokemon --------------------------------------------------------------------------------
-function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, id, index) {
+function basicTemplate(name, sprite, typeClass, types, height, weight, ability_1, ability_2, typeImgs, stats, criesLatest, criesLegacy, id, index) {
     return `<div onclick="openOverlayCardInfo(${index})" class="card_pokemon_info">
         <div class="background_head_card ${typeClass}">
             <h2> #${id}  ${name.toUpperCase()}</h2>
@@ -8,20 +8,16 @@ function basicTemplate(name, sprite, typeClass, type, typeSecond, height, weight
             <img class="pkm_img_card" src="${sprite}" alt="${sprite}" />
         </div>
         <div class="card_lower_info_section">
-            <div class="element_pair">
-                <p>${type}</p>
-                <img class="symbol_element_card" src="${typeImg}">
-            </div>
-            <div class="element_pair">
-                ${typeSecond !== "" ? `<p>${typeSecond}</p>` : ""}
-                ${typeSecond !== "" ? `<img class="symbol_element_card" src="${typeImgSecond}" alt="${typeSecond} type image" />` : ""}
-            </div>
+        ${typeImgs.map(img => `
+            <img class="symbol_element_card" src="${img}">
+        `).join("")}
+        ${types.length ? `<span class="tooltiptext_type_symbol_main_card">${types.join(", ")}</span>` : ""}           
         </div>
     </div>`;
 }
 
 //Template Overlay Card Pokemon --------------------------------------------------------------------------------
-function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, weight, ability_1, ability_2, typeImg, typeImgSecond, stats, criesLatest, criesLegacy, index) {
+function templateCardOverlay(name, sprite, typeClass, types, height, weight, ability_1, ability_2, typeImgs, stats, criesLatest, criesLegacy, index) {
     return `<div onclick="eventBubblingOverlayCardInfo(event)" class="card_pokemon_info_overlay">
     <div class="head_section_overlay">
         <h1> ${name.toUpperCase()}</h1>
@@ -60,7 +56,7 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
             </tr>
             <tr>
                 <td>Types:</td>
-                <td>${type}${typeSecond && typeSecond !== "unknowen" ? `, ${typeSecond}` : ""}</td>
+                <td>${types.join(", ")}</td>
             </tr>
         </table>
         <div class="arrow_section_overlay">
@@ -118,13 +114,19 @@ function templateCardOverlay(name, sprite, typeClass, type, typeSecond, height, 
     </div>
     <div class="card_lower_info_section">
         <div class="card_lower_info_section">
-            <div class="symbol_element_card_overlay_div">
-                <img class="symbol_element_card_overlay" src="${typeImg}">
-                <span class="tooltiptext_type_symbol">${type}</span>
-            </div>
-            <div class="symbol_element_card_overlay_div">
-                ${typeSecond !== "" ? `<img class="symbol_element_card_overlay" src="${typeImgSecond}" alt="${typeSecond} type image"/>` : ""}
-                <span class="tooltiptext_type_symbol">${typeSecond}</span>
+            <div class="card_lower_info_section">
+                <div class="symbol_element_card_overlay_div">
+                    <div class="symbol_element_card_overlay_wrap">
+                        <img class="symbol_element_card_overlay" src="${typeImgs[0]}">
+                        ${types[0] ? `<span class="tooltiptext_type_symbol">${types.join(", ")}</span>` : ""}
+                    </div>
+                    ${typeImgs[1] ? `
+                    <div class="symbol_element_card_overlay_wrap">
+                        <img class="symbol_element_card_overlay" src="${typeImgs[1]}" alt="Type Image">
+                        ${types[0] ? `<span class="tooltiptext_type_symbol">${types.join(", ")}</span>` : ""}
+                    </div>
+                    ` : ""}
+                </div>
             </div>
         </div>
     </div>
